@@ -4,7 +4,8 @@ import '../App.css';
 class GenerateNumber extends React.Component {
     componentDidUpdate = () => {
         let time, digit;
-        digit = this.props.level.main + 2;
+        console.log(atob(this.props.question).toString());
+        digit = atob(this.props.question).toString().length;
         time = 100 * Math.min(digit, 5) + 400 * Math.max(digit - 5, 0);
         let number = document.getElementById('number');
         setTimeout(() => {
@@ -21,7 +22,7 @@ class GenerateNumber extends React.Component {
         return(
             <div className="app__gen-number">
                 <div className="app__info">
-                    <p className="app__level">Level: {this.props.level.main} - {this.props.level.sub}</p>
+                    <p className="app__level">Score: {this.props.score}</p>
                     <p className="app__wrong">Wrong: {this.props.wrong}/3</p>
                 </div>
                 <p className="app__divider">#################################</p>

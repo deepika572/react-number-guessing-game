@@ -11,14 +11,14 @@ class Userplay extends React.Component {
 		this.resetState = this.resetState.bind(this);
 		this.state = {
 			question: btoa(this.randomGenerate(2)),
-			level: {main: 1, sub: 1},
+			score: 0,
 			wrong: 0		
 		}
 	}
 	resetState() {
 		this.setState({
 			question: btoa(this.randomGenerate(2)),
-			level: {main: 1, sub: 1},
+			score: 0,
 			wrong: 0,
 		})
 	}
@@ -30,27 +30,21 @@ class Userplay extends React.Component {
 	}
 	compareUserInput(userNumber) {
 		let currQuestion = this.state.question,
-			mainLevel = this.state.level.main,
-			subLevel = this.state.level.sub,
+			score = this.state.score,
 			wrong = this.state.wrong,
 			digit;
 
-		if(userNumber == currQuestion) {
-			if(subLevel < 3) {
-				++subLevel;
-			} else 
-			if(subLevel == 3) {
-				++mainLevel;
-				subLevel = 1;
-			}
+		if(userNumber === currQuestion) {
+			score += atob(userNumber).toString().length;
 		} else {
 			++wrong;
 		}
-		digit = mainLevel + 2;
+		digit = Math.ceil(Math.random() * 5);
+		console.log(digit);
 
 		this.setState({
 			question: btoa(this.randomGenerate(digit)),
-			level: {main: mainLevel, sub: subLevel},
+			score: score,
 			wrong: wrong
 		});
 	}
@@ -59,7 +53,7 @@ class Userplay extends React.Component {
 			<div className="main__app">
 				<GenerateNumber 
 					question={this.state.question}
-					level={this.state.level}
+					score={this.state.score}
 					wrong={this.state.wrong}/>
 				<InputNumber 
 					compareUserInput={this.compareUserInput} 
