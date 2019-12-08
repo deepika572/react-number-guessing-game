@@ -13,7 +13,8 @@ class GenerateNumber extends React.Component {
         }, time);
     }
     componentDidMount = () => {
-	       console.log("hello");
+           console.log("hello");
+           console.log("deepika")
 		let number = document.getElementById('number');
 		setTimeout(function() {
 			number.innerHTML = number.innerHTML.replace(/\w|\W/gi, '&#183;');
