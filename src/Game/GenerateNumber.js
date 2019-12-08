@@ -13,6 +13,7 @@ class GenerateNumber extends React.Component {
         }, time);
     }
     componentDidMount = () => {
+	       console.log("hello");
 		let number = document.getElementById('number');
 		setTimeout(function() {
 			number.innerHTML = number.innerHTML.replace(/\w|\W/gi, '&#183;');
@@ -34,6 +35,7 @@ class GenerateNumber extends React.Component {
                 <p className="app__divider">#################################</p>
             </div>
         );
+  
     }
 }
 
