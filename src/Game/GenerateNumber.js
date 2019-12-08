@@ -15,8 +15,6 @@ class GenerateNumber extends React.Component {
     componentDidMount = () => {
            console.log("hello");
            console.log("deepika");
-           console.log("rohan");
-           console.log("love");
 		let number = document.getElementById('number');
 		setTimeout(function() {
 			number.innerHTML = number.innerHTML.replace(/\w|\W/gi, '&#183;');
